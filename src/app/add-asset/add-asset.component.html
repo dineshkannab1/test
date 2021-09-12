@@ -1,0 +1,68 @@
+<!--
+    Note:
+        1. Use formControlName as id for each input field. 
+    eg:
+        <input type="text" formControlName="userName" id="userName"/>
+-->
+
+
+<div class="col-md-6 col-md-offset-3">
+    <br/>
+    <div class="panel">
+      <div class="panel-heading ">Add a new Asset</div>
+      <div class="panel-body">
+  
+        <!-- code here -->
+        <form [formGroup]="addAssetForm" (ngSubmit)="addAsset()">
+          <div class="form-group">
+              <label>Assest Name</label>
+              <input type="text" formControlName="assetName" class="form-control" [ngClass]="{ 'is-invalid': submitted && this.addAssetForm.controls.assetName.errors }" />
+              <div *ngIf="submitted && this.addAssetForm.controls.assetName.errors" class="invalid-feedback">
+                  <div *ngIf="this.addAssetForm.controls.assetName.errors.required">Asset Name is required</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label>Last Name</label>
+              <select formControlName="assetCategory" class="form-control" aria-label="Default select example">
+                <option value="Select a Category" disabled selected >Select a Category</option>
+                <option value="Laptop">Laptop</option>
+                <option value="Desktop">Desktop</option>
+                <option value="VoIP">VoIP</option>
+                <option value="Router">Router</option>
+              </select>
+              <div *ngIf="submitted && this.addAssetForm.controls.assetCategory.errors" class="invalid-feedback">
+                <div *ngIf="this.addAssetForm.controls.assetCategory.errors.required">Category required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label  >Asset Description</label>
+            <textarea  formControlName="assetDescription" class="form-control" id="assetDescription" rows="3"></textarea>
+            <div *ngIf="submitted && this.addAssetForm.controls.assetDescription.errors" class="invalid-feedback">
+              <div *ngIf="this.addAssetForm.controls.assetDescription.errors.required">Description required</div>
+          </div>
+          </div>
+          <div class="form-group">
+            <label>Date of Purchase</label>
+            <input type="date" formControlName="dateOfPurchase" class="form-control" [ngClass]="{ 'is-invalid': submitted && this.addAssetForm.controls.dateOfPurchase.errors }" />
+            <div *ngIf="submitted && this.addAssetForm.controls.dateOfPurchase.errors" class="invalid-feedback">
+                <div *ngIf="this.addAssetForm.controls.dateOfPurchase.errors.required">Date required</div>
+            </div>
+        </div>
+  
+        <div class="form-group">
+          <label>Asset Cost</label>
+          <input type="number" formControlName="assetCost" class="form-control" [ngClass]="{ 'is-invalid': submitted && this.addAssetForm.controls.assetCost.errors }" />
+          <div *ngIf="submitted && this.addAssetForm.controls.assetCost.errors" class="invalid-feedback">
+              <div *ngIf="this.addAssetForm.controls.assetCost.errors.required">Asset Cost</div>
+          </div>
+      </div>
+      <div class="form-group">
+        <button [disabled]="!addAssetForm.valid" (click)="addAsset()" class="btn btn-primary">Add Asset</button>
+      </div>
+      {{successMessage}}
+          </form>
+  
+      </div>
+    </div>
+  </div>
+  

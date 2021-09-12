@@ -1,0 +1,45 @@
+<!--
+    Note:
+        1. Use formControlName as id for each input field. 
+    eg:
+        <input type="text" formControlName="userName" id="userName"/>
+-->
+
+
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Update Asset</div>
+        <div class="panel-body">
+          <!-- Code here -->
+          <form [formGroup]="updateAssetForm" (ngSubmit)="updateAsset()">
+            
+            <div class="form-group">
+                <label>Last Name</label>
+                <select formControlName="updateField" class="form-control" aria-label="Default select example">
+                  <option value="Select a Category" disabled selected >Select a Category</option>
+                  <option value="assetName">assetName</option>
+                  <option value="assetCategory">assetCategory</option>
+                  <option value="assetDescription">assetDescription</option>
+                 
+                </select>
+                <div *ngIf="submitted && f.updateField.errors" class="invalid-feedback">
+                  <div *ngIf="f.updateField.errors.required">Category required</div>
+              </div>
+            </div>
+  
+          <div class="form-group">
+            <label>Update Value</label>
+            <input type="number" formControlName="updateValue" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.assetCost.errors }" />
+            <div *ngIf="submitted && f.updateValue.errors" class="invalid-feedback">
+                <div *ngIf="f.updateValue.errors.required">Asset Cost</div>
+            </div>
+        </div>
+        <div class="form-group">
+          <button [disabled]="!updateAssetForm.valid" (click)="updateAsset()" class="btn btn-primary">Update Asset</button>
+        </div>
+        {{successMessage}}
+            </form>
+        </div>
+      </div>
+    </div>
+  

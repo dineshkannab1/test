@@ -1,0 +1,48 @@
+<!--
+  1. Do not create the field using form tag.
+  2. When user enters asset id & click on get details, 
+   viewAsset() method must be invoked.
+  3. When user clicks update it should call update() method
+-->
+
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">View Booking</div>
+            <div class="panel-body">
+            <div class="form-group">
+                <label>Select Assest Id</label>
+                <input [(ngModel)]='assetId' name='assetId' [value]='assetId' type="text" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <button (click)="viewAsset(assetId)" class="btn btn-primary">Get Details</button>
+              </div>
+            <div *ngIf="errorMessage">
+                {{errorMessage}}
+            </div>
+
+
+            <table *ngIf="assetDetails" style="width:100%">
+                <tr>
+                  <th>Assest Name</th>
+                  <th>Assest Cat</th> 
+                  <th>Assest Des</th>
+                  <th>Des</th>
+                  <th>Date of Pur</th>
+                  <th>Assest Cost</th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <td>{{assetDetails.assetId}}</td>
+                  <td>{{assetDetails.assetName}}</td>
+                  <td>{{assetDetails.assetDescription}}</td>
+                  <td>{{assetDetails.dateOfPurchase}}</td>
+                  <td> {{assetDetails.assetCost}}</td>
+                  <td><a (click)="update(assetDetails)"> Update </a></td>
+         
+                </tr>
+              
+              </table>
+              </div>
+        </div>
+    </div>
