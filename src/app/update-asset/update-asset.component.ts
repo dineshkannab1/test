@@ -22,15 +22,7 @@ export class UpdateAssetComponent implements OnInit {
       updateValue: ['', Validators.required]
     });
 
-    this.assetId=this.route.snapshot.params['assetId'];
-    this.assetId = this.route.params.subscribe(params => {
-      
-
-    });
-    var url = window.location.pathname;
-      this.assetId = url.substring(url.lastIndexOf('/') + 1);
-
-      console.log(this.assetId)
+    this.assetId = this.route.snapshot.params.assetId;
   }
   
   ngOnInit() {

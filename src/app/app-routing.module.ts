@@ -22,13 +22,10 @@ export const routes: Routes = [
     path: 'updateAsset',
     canActivateChild: [UpdateGuard],
     children: [
-      {
-         path: ':assetId',
-         component: UpdateAssetComponent
-      }
+        { path: ':assetId', component: UpdateAssetComponent }
     ]
-  },
-  { path: '**', redirectTo: '/addAsset', pathMatch: 'full' }
+}
+  // { path: '**', redirectTo: '/addAsset', pathMatch: 'full' }
 
 ];
 

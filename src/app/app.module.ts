@@ -8,6 +8,7 @@ import { ViewAssetComponent } from './view-asset/view-asset.component';
 import { UpdateAssetComponent } from './update-asset/update-asset.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { UpdateGuard } from './shared/update.guard';
 
 @NgModule({
   declarations: [
@@ -22,8 +23,11 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+  
   ],
-  providers: [],
+  providers: [
+    UpdateGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
